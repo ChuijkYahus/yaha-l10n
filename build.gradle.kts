@@ -41,21 +41,35 @@ fabricApi {
 }
 
 repositories {
-    // Add repositories to retrieve artifacts from in here.
-    // You should only use this when depending on other mods because
-    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-    // for more information about repositories.
+    // repositories and dependencies copied from miyu
+    // because i do not know what i am doing :p
+    maven("https://maven.blamejared.com/")
+    maven("https://maven.ladysnake.org/releases")
+    maven("https://maven.shedaniel.me/")
+    maven("https://maven.terraformersmc.com/releases")
 }
 
 dependencies {
-    // To change the versions see the gradle.properties file
     minecraft("com.mojang:minecraft:${project.property("minecraft_version")}")
     mappings("net.fabricmc:yarn:${project.property("yarn_mappings")}:v2")
     modImplementation("net.fabricmc:fabric-loader:${project.property("loader_version")}")
     modImplementation("net.fabricmc:fabric-language-kotlin:${project.property("kotlin_loader_version")}")
 
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
+
+
+    modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.property("cloth_config_version")}")
+    modImplementation("at.petra-k.hexcasting:hexcasting-fabric-${project.property("minecraft_version")}:${project.property("hexcasting_version")}") {
+        exclude(module = "phosphor")
+        exclude(module = "lithium")
+        exclude(module = "emi")
+    }
+
+    modLocalRuntime("dev.onyxstudios.cardinal-components-api:cardinal-components-api:${project.property("cardinal_components_version")}")
+    modLocalRuntime("com.samsthenerd.inline:inline-fabric:${project.property("minecraft_version")}-${project.property("inline_version")}")
+    modLocalRuntime("vazkii.patchouli:Patchouli:${project.property("minecraft_version")}-${project.property("patchouli_version")}-FABRIC")
+    modLocalRuntime("at.petra-k.paucal:paucal-fabric-${project.property("minecraft_version")}:${project.property("paucal_version")}")
+    modLocalRuntime(files("${rootProject.rootDir}/libs/serialization-hooks-0.4.99999.jar"))
 }
 
 tasks.processResources {
