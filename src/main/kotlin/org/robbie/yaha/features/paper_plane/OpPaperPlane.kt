@@ -19,7 +19,9 @@ object OpPaperPlane : SpellAction {
         env: CastingEnvironment
     ): SpellAction.Result {
         val pos = args.getVec3(0, argc)
+        env.assertVecInRange(pos)
         val entity = args.getEntity(1, argc)
+        env.assertEntityInRange(entity)
         return SpellAction.Result(
             Spell(pos, entity),
             MediaConstants.DUST_UNIT * 2,
@@ -29,11 +31,12 @@ object OpPaperPlane : SpellAction {
 
     private data class Spell(val pos: Vec3d, val entity: Entity) : RenderedSpell {
         override fun cast(env: CastingEnvironment) {
-            val plane = PaperPlaneEntity(env.world)
-
-            plane.setPosition(pos)
-            plane.owner = env.castingEntity
-            plane.setTarget(entity)
+            val plane = PaperPlaneEntity(
+                env.world,
+                env.castingEntity,
+                entity,
+                pos
+            )
             env.world.spawnEntity(plane)
         }
     }
