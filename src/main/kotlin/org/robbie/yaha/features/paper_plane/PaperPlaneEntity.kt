@@ -40,6 +40,7 @@ class PaperPlaneEntity(
         this.owner = owner
         setTarget(target)
         setPosition(pos)
+        tick()
     }
 
     private var target: Entity? = null
@@ -74,7 +75,7 @@ class PaperPlaneEntity(
         pitch = (MathHelper.atan2(-velocity.y, velocity.horizontalLength()) * 180f / Math.PI).toFloat()
     }
 
-    override fun canHit(entity: Entity) = super.canHit(entity) && (entity !is PaperPlaneEntity || target != entity)
+    override fun canHit(entity: Entity) = super.canHit(entity) && (entity !is PaperPlaneEntity || target == entity)
 
     override fun canHit() = true
 
