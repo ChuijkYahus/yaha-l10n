@@ -6,9 +6,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.api.utils.asCompound
-import at.petrak.hexcasting.api.utils.getBoolean
 import at.petrak.hexcasting.api.utils.getList
-import at.petrak.hexcasting.api.utils.hasByte
 import at.petrak.hexcasting.api.utils.hasCompound
 import at.petrak.hexcasting.api.utils.hasInt
 import at.petrak.hexcasting.api.utils.hasList

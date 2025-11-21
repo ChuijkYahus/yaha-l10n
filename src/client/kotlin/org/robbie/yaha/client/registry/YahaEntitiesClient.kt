@@ -1,7 +1,6 @@
 package org.robbie.yaha.client.registry
 
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
-import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer
 import org.robbie.yaha.client.features.paper_plane.PaperPlaneRenderer
 import org.robbie.yaha.registry.YahaEntities

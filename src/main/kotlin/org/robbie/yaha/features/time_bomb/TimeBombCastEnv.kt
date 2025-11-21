@@ -2,12 +2,9 @@ package org.robbie.yaha.features.time_bomb
 
 import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
-import at.petrak.hexcasting.api.casting.eval.MishapEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedMishapEnv
 import at.petrak.hexcasting.api.pigment.FrozenPigment
-import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.entity.LivingEntity
-import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
