@@ -1,8 +1,7 @@
 # TODO
 - Paper Plane
-  - custom damage source
+  - custom damage source?
   - book page
-  - localisation
+  - (entity -> entity | null) get target
 - Time Bomb
-  - decide on entity renderer
-  - basically everything lol
+  - book page

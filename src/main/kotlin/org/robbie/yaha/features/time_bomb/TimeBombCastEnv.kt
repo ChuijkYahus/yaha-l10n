@@ -1,8 +1,9 @@
 package org.robbie.yaha.features.time_bomb
 
 import at.petrak.hexcasting.api.casting.ParticleSpray
+import at.petrak.hexcasting.api.casting.eval.CastResult
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
-import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedMishapEnv
+import at.petrak.hexcasting.api.casting.eval.sideeffects.OperatorSideEffect
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import net.minecraft.entity.LivingEntity
 import net.minecraft.item.ItemStack
@@ -16,12 +17,22 @@ import net.minecraft.world.GameMode
 import java.util.function.Predicate
 
 class TimeBombCastEnv(world: ServerWorld?, private val bomb: TimeBombEntity) : CastingEnvironment(world) {
-    private val AMBIT = 4.0
+    private val AMBIT = 8.0
     private val player = bomb.owner as LivingEntity?
 
     override fun getCastingEntity() = player
 
-    override fun getMishapEnvironment() = if (player is ServerPlayerEntity) PlayerBasedMishapEnv(player) else null
+    override fun getMishapEnvironment() = TimeBombMishapEnv(bomb, world)
+
+    override fun postExecution(result: CastResult?) {
+        super.postExecution(result)
+        if (player !is ServerPlayerEntity || result == null) return
+
+        for (sideEffect in result.sideEffects) if (sideEffect is OperatorSideEffect.DoMishap) {
+            val msg = sideEffect.mishap.errorMessageWithName(this, sideEffect.errorCtx)
+            printMessage(msg)
+        }
+    }
 
     override fun mishapSprayPos(): Vec3d = bomb.pos
 
@@ -74,4 +85,6 @@ class TimeBombCastEnv(world: ServerWorld?, private val bomb: TimeBombEntity) : C
     override fun printMessage(message: Text?) {
         if (player is ServerPlayerEntity) player.sendMessage(message)
     }
+
+    fun getBomb() = bomb
 }

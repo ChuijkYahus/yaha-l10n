@@ -1,5 +1,6 @@
 package org.robbie.yaha.registry
 
+import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.SpawnGroup
 import net.minecraft.registry.Registries
@@ -20,7 +21,11 @@ object YahaEntities {
         .build(Yaha.MOD_ID + ":time_bomb")
 
     fun register() {
-        Registry.register(Registries.ENTITY_TYPE, Yaha.id("paper_plane"), PAPER_PLANE_ENTITY)
-        Registry.register(Registries.ENTITY_TYPE, Yaha.id("time_bomb"), TIME_BOMB_ENTITY)
+        register("paper_plane", PAPER_PLANE_ENTITY)
+        register("time_bomb", TIME_BOMB_ENTITY)
+    }
+
+    private fun register(name: String, entityType: EntityType<out Entity>) {
+        Registry.register(Registries.ENTITY_TYPE, Yaha.id(name), entityType)
     }
 }

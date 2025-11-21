@@ -73,6 +73,7 @@ dependencies {
     modLocalRuntime("at.petra-k.paucal:paucal-fabric-${project.property("minecraft_version")}:${project.property("paucal_version")}")
     modLocalRuntime(files("${rootProject.rootDir}/libs/serialization-hooks-0.4.99999.jar"))
 
+    // other mod testing
     modLocalRuntime("maven.modrinth:hexcassettes:1.1.4")
 }
 

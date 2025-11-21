@@ -35,6 +35,7 @@ import net.minecraft.world.World
 import org.robbie.yaha.YahaUtils
 import org.robbie.yaha.registry.YahaEntities
 import org.robbie.yaha.registry.YahaItems
+import kotlin.math.absoluteValue
 
 const val DRAG = 0.9
 
@@ -141,8 +142,13 @@ class TimeBombEntity(
 
     override fun onBlockHit(blockHitResult: BlockHitResult?) {
         if (blockHitResult == null) return
-        val scale = blockHitResult.side.vector.multiply(-2).add(1, 1, 1)
-        velocity = velocity.multiply(scale.x.toDouble(), scale.y.toDouble(), scale.z.toDouble())
+        val normal = blockHitResult.side.vector
+        val force = velocity.multiply(
+            -normal.x.toDouble().absoluteValue,
+            -normal.y.toDouble().absoluteValue,
+            -normal.z.toDouble().absoluteValue
+        )
+        velocity = velocity.add(force.multiply(1.8))
     }
 
     override fun writeCustomDataToNbt(nbt: NbtCompound?) {

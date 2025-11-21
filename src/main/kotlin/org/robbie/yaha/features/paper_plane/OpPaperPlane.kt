@@ -14,7 +14,7 @@ import net.minecraft.entity.Entity
 import net.minecraft.util.math.Vec3d
 
 object OpPaperPlane : SpellAction {
-    override val argc: Int = 2
+    override val argc = 2
 
     override fun execute(
         args: List<Iota>,
