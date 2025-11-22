@@ -5,3 +5,7 @@
   - (entity -> entity | null) get target
 - Time Bomb
   - book page
+- mantra purif ([pattern], pattern -> mantra)
+- spindle item; bundle of thought knots
+- focal pouch; bundle of foci
+- create sus block pattern

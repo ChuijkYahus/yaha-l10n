@@ -1,4 +1,4 @@
-package org.robbie.yaha.features.time_bomb;
+package org.robbie.yaha.features.time_bomb
 
 import at.petrak.hexcasting.api.casting.eval.MishapEnvironment
 import net.minecraft.server.network.ServerPlayerEntity
