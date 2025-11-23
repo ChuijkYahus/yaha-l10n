@@ -13,5 +13,12 @@ object YahaItemsClient {
         ) { itemStack, clientWorld, livingEntity, seed ->
             IotaHolderBundle.getBundleOccupancy(itemStack).toFloat() / IotaHolderBundle.MAX_COUNT.toFloat()
         }
+
+        ModelPredicateProviderRegistry.register(
+            YahaItems.POUCH,
+            Identifier("filled")
+        ) { itemStack, clientWorld, livingEntity, seed ->
+            IotaHolderBundle.getBundleOccupancy(itemStack).toFloat() / IotaHolderBundle.MAX_COUNT.toFloat()
+        }
     }
 }

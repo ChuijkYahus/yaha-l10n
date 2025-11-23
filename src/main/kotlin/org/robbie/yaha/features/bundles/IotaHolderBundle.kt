@@ -17,6 +17,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.item.ItemUsage
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
+import net.minecraft.nbt.NbtList
 import net.minecraft.screen.slot.Slot
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.sound.SoundEvents
@@ -37,7 +38,7 @@ import java.util.stream.Stream
 val ITEM_BAR_COLOR = MathHelper.packRgb(0.4f, 0.4f, 1.0f)
 
 /**
- * Holds 64 individual items that satisfy the given filter.
+ * Holds 16 individual items that satisfy the given filter.
  * Reading this bundle picks and reads a random item inside, or null if no non-empty readable item can be found.
  */
 class IotaHolderBundle(settings: Settings, val filter: Predicate<Item>) : Item(settings), IotaHolderItem {
@@ -105,7 +106,7 @@ class IotaHolderBundle(settings: Settings, val filter: Predicate<Item>) : Item(s
             Text.translatable(
                 "item.minecraft.bundle.fullness",
                 getBundleOccupancy(stack),
-                64).formatted(Formatting.GRAY)
+                MAX_COUNT).formatted(Formatting.GRAY)
         )
     }
 
@@ -137,6 +138,7 @@ class IotaHolderBundle(settings: Settings, val filter: Predicate<Item>) : Item(s
     fun addOneToBundle(bundle: ItemStack, stack: ItemStack): Boolean {
         if (getBundleOccupancy(bundle) == MAX_COUNT || !filter.test(stack.item)) return false
         val bundleNbt = bundle.orCreateNbt // kotlin removes the "get" lol
+        if (!bundleNbt.contains("Items")) bundleNbt.put("Items", NbtList())
         val listNbt = bundleNbt.getList("Items", NbtElement.COMPOUND_TYPE)
         val item = stack.copyWithCount(1)
         val itemNbt = NbtCompound()
@@ -199,7 +201,7 @@ class IotaHolderBundle(settings: Settings, val filter: Predicate<Item>) : Item(s
 
     companion object {
         // these functions are here so they can be used by the item model
-        const val MAX_COUNT = 64
+        const val MAX_COUNT = 16
 
         fun getBundledStacks(bundle: ItemStack): Stream<ItemStack> {
             val bundleNbt = bundle.nbt ?: return Stream.empty()

@@ -4,7 +4,11 @@
   - advancement - collide with other plane
 - mantra purif ([pattern], pattern -> mantra)
 - spindle item; bundle of thought knots
+  - name lang
 - focal pouch; bundle of foci
+  - registry
+  - textures
+  - name lang
 - Sus Block
   - book page
   - advancement - sand in sand / gravel in gravel
