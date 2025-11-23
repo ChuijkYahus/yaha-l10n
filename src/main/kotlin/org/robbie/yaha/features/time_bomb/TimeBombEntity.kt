@@ -186,7 +186,7 @@ class TimeBombEntity(
         else 0
     }
 
-    override fun getDefaultItem() = YahaItems.TIME_BOMB_ITEM
+    override fun getDefaultItem() = YahaItems.TIME_BOMB
 
     override fun hasNoGravity() = true
 }
