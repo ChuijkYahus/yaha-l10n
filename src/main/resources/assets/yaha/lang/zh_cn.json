@@ -42,6 +42,6 @@
   "yaha.page.spells.title": "Yaha 法术",
   "hexcasting.action.yaha:sussify_block": "埋藏物品",
   "yaha.page.sussify_block.summary": "将物品实体埋入沙子或沙砾方块，从而形成可疑的沙子/沙砾。消耗 1/8 个$(l:items/amethyst)$(item)紫水晶粉$()。",
-  "hexcasting.action.yaha:potion_to_item": "拆停",
-  "yaha.page.potion_to_item.summary": "将飞行的药水拆停，将其变为物品实体。消耗 1 个$(l:items/amethyst)$(item)充能紫水晶$()。$(br2)我确实很像质道……要是某种弹射物对自己施放这个，会怎么样？"
+  "hexcasting.action.yaha:potion_to_item": "截停",
+  "yaha.page.potion_to_item.summary": "将飞行的药水截停，将其变为物品实体。消耗 1 个$(l:items/amethyst)$(item)充能紫水晶$()。$(br2)我确实很像质道……要是某种弹射物对自己施放这个，会怎么样？"
 }
