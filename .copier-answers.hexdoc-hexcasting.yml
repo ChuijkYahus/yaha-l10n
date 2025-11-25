@@ -1,0 +1,19 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+# https://copier.readthedocs.io/en/stable/updating/#never-change-the-answers-file-manually
+_commit: v0.2.0
+_src_path: gh:hexdoc-dev/hexdoc-hexcasting-template
+advanced: false
+github_repo: yaha
+github_user: TheRobbie73
+gradle_deps_type: gradle.properties
+gradle_hex_version_key: hexcasting_version
+gradle_mod_version_key: mod_version
+main_branch: master
+minecraft_version: 1.20.1
+minecraft_version_in_mod_version: false
+mod_description: A Hexcasting addon that adds an assorted handful of spells, patterns
+    and items!
+mod_display_name: Yet Another Hex Addon
+modid: yaha
+multiloader: false
+pattern_registry_path: main/kotlin/org/robbie/yaha/registry/YahaActions.kt
