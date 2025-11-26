@@ -12,7 +12,6 @@ resource_dirs = [  # top takes priority
 export_dir = "src/hexdoc_yaha/_export/generated"
 
 [template]
-# TODO: change this to point to your actual mod icon
 icon = "icon.png"
 include = [
     "yaha",
