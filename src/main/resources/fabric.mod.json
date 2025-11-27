@@ -33,5 +33,6 @@
     "fabric": "*",
     "minecraft": "${minecraft_version}",
     "hexcasting": ">=${hexcasting_version}"
-  }
+  },
+  "accessWidener": "yaha.accesswidener"
 }

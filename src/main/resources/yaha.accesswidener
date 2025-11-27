@@ -1,0 +1,3 @@
+accessWidener v2 named
+
+extendable method net/minecraft/block/entity/BrushableBlockEntity spawnItem (Lnet/minecraft/entity/player/PlayerEntity;)V

@@ -32,6 +32,8 @@ loom {
             sourceSet("client")
         }
     }
+
+    accessWidenerPath = file("src/main/resources/yaha.accesswidener")
 }
 
 fabricApi {
@@ -90,7 +92,8 @@ tasks.processResources {
             "version" to project.version,
             "minecraft_version" to project.property("minecraft_version"),
             "loader_version" to project.property("loader_version"),
-            "kotlin_loader_version" to project.property("kotlin_loader_version")
+            "kotlin_loader_version" to project.property("kotlin_loader_version"),
+            "hexcasting_version" to project.property("hexcasting_version")
         )
     }
 }

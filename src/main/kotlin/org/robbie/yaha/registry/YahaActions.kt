@@ -10,7 +10,7 @@ import org.robbie.yaha.Yaha
 import org.robbie.yaha.features.paper_plane.OpPaperPlane
 import org.robbie.yaha.features.paper_plane.OpPaperPlaneTarget
 import org.robbie.yaha.features.spells.OpPotionToItem
-import org.robbie.yaha.features.spells.OpSussifyBlock
+import org.robbie.yaha.features.sussify.OpSussifyBlock
 import org.robbie.yaha.features.time_bomb.OpTimeBomb
 import org.robbie.yaha.features.time_bomb.OpTimeBombPos
 
