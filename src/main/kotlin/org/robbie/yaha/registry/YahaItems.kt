@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.HexAPI
 import at.petrak.hexcasting.common.items.storage.ItemFocus
 import at.petrak.hexcasting.common.items.storage.ItemThoughtKnot
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
+import net.minecraft.item.BlockItem
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
 import net.minecraft.registry.Registries
@@ -18,6 +19,8 @@ object YahaItems {
     val SPINDLE = IotaHolderBundle(Item.Settings().maxCount(1), { it is ItemThoughtKnot }) // HexItems is not initialised! cant use THOUGHT_KNOT!!!
     val POUCH = IotaHolderBundle(Item.Settings().maxCount(1), { it is ItemFocus })
 
+    val ENTITY_SUS_SAND = BlockItem(YahaBlocks.ENTITY_SUS_SAND, Item.Settings())
+    val ENTITY_SUS_GRAVEL = BlockItem(YahaBlocks.ENTITY_SUS_GRAVEL, Item.Settings())
     // uncomment when uhhhh 10 items in addon
     // val YAHA_GROUP = FabricItemGroup.builder()
     //     .icon { TIME_BOMB.defaultStack }
@@ -33,6 +36,9 @@ object YahaItems {
         register("time_bomb", TIME_BOMB)
         register("spindle", SPINDLE)
         register("pouch", POUCH)
+
+        register("entity_sus_sand", ENTITY_SUS_SAND)
+        register("entity_sus_gravel", ENTITY_SUS_GRAVEL)
 
         // Registry.register(Registries.ITEM_GROUP, RegistryKey.of(Registries.ITEM_GROUP.key, Yaha.id("yaha")), YAHA_GROUP)
         ItemGroupEvents.modifyEntriesEvent(

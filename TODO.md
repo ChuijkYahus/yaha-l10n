@@ -1,8 +1,9 @@
 # TODO
-- mod icon
-- hexbug
-- testing with hexxy4 pack
 - Volleybomb - Have your Time Bomb get punched 10 times before it explodes.
+- Bury Item working on small entities
+  - block langs + add hint to book
+  - use tag to determine small entity
+  - time bomb included hehehe -> needs to save castimage
 
 # Ideas
 - spindle and pouch
