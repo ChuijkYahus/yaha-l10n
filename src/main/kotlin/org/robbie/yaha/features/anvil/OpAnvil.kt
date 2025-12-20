@@ -22,7 +22,7 @@ object OpAnvil : SpellAction {
         env.assertVecInRange(pos)
         return SpellAction.Result(
             Spell(pos),
-            MediaConstants.DUST_UNIT * 2,
+            MediaConstants.CRYSTAL_UNIT,
             listOf(ParticleSpray.cloud(pos, 1.0))
         )
     }

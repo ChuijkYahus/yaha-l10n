@@ -18,6 +18,7 @@ import net.minecraft.util.hit.HitResult
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import org.robbie.yaha.Yaha
+import org.robbie.yaha.YahaUtils
 import org.robbie.yaha.features.paper_plane.PaperPlaneEntity
 import org.robbie.yaha.registry.YahaDamageTypes
 import org.robbie.yaha.registry.YahaEntities
@@ -49,6 +50,10 @@ class AnvilEntity(
         if (!world.isClient && age > MAX_AGE) shatter()
         if (cooldown != 0) cooldown--
 
+        YahaUtils.pitchYawFromRotVec(velocity)?.let {
+            pitch = it.first
+            yaw = it.second
+        }
         if (!hasNoGravity()) velocity = velocity.add(0.0, GRAVITY, 0.0)
         setPosition(pos.add(velocity))
         velocity = velocity.multiply(DRAG)
