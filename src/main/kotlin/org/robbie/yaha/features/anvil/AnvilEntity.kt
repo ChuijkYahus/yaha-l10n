@@ -18,6 +18,7 @@ import net.minecraft.util.hit.HitResult
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import org.robbie.yaha.Yaha
+import org.robbie.yaha.features.paper_plane.PaperPlaneEntity
 import org.robbie.yaha.registry.YahaDamageTypes
 import org.robbie.yaha.registry.YahaEntities
 import kotlin.math.pow
@@ -48,17 +49,21 @@ class AnvilEntity(
         if (!world.isClient && age > MAX_AGE) shatter()
         if (cooldown != 0) cooldown--
 
-        val hitResult = ProjectileUtil.getCollision(this, ::canHit)
-        if (hitResult.type != HitResult.Type.MISS) onCollision(hitResult)
-
         if (!hasNoGravity()) velocity = velocity.add(0.0, GRAVITY, 0.0)
         setPosition(pos.add(velocity))
         velocity = velocity.multiply(DRAG)
 
         checkBlockCollision()
+        val hitResult = ProjectileUtil.getCollision(this, ::canHit)
+        if (hitResult.type != HitResult.Type.MISS) onCollision(hitResult)
     }
 
-    override fun canHit(entity: Entity) = super.canHit(entity) && entity !is AnvilEntity
+    override fun canHit(entity: Entity) = super.canHit(entity)
+            && entity !is AnvilEntity
+            && (
+            entity !is PaperPlaneEntity
+                    || entity.owner != owner
+            )
     override fun canHit() = true
 
     override fun onBlockHit(blockHitResult: BlockHitResult) {
@@ -69,12 +74,17 @@ class AnvilEntity(
         val entity = entityHitResult.entity
         if (entity is AnvilEntity || cooldown != 0) return
 
+        playHitSound()
+        spawnParticles()
+
         val damage = 10 - 10 * (velocity.lengthSquared() / 5 + 1).pow(-2)
-        entity.damage(world.damageSources.create(
-            YahaDamageTypes.ANVIL,
-            this,
-            owner
-        ), damage.toFloat())
+        if (entity !is ProjectileEntity) {
+            entity.damage(world.damageSources.create(
+                YahaDamageTypes.ANVIL,
+                this,
+                owner
+            ), damage.toFloat())
+        }
         val entityVelocity = entity.velocity
         entity.velocity = velocity
         velocity = entityVelocity
@@ -85,9 +95,6 @@ class AnvilEntity(
             shatter()
             return
         }
-
-        playHitSound()
-        spawnParticles()
     }
 
     private fun shatter() {
@@ -108,7 +115,7 @@ class AnvilEntity(
 
     private fun spawnParticles() {
         val particleParam = ItemStackParticleEffect(ParticleTypes.ITEM, ItemStack(Items.AMETHYST_BLOCK, 1))
-        repeat(16) { world.addImportantParticle(
+        repeat(16) { world.addParticle(
             particleParam,
             x + Yaha.RANDOM.nextDouble() - 0.5,
             y + Yaha.RANDOM.nextDouble(),
