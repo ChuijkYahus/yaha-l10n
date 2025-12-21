@@ -19,7 +19,7 @@ class IotaBundleTooltipComponent(data: IotaBundleTooltipData) : TooltipComponent
     }
 
     private fun drawSlots(x: Int, y: Int, drawContext: DrawContext) {
-        repeat(getRows()) { i ->
+        repeat(getRows().coerceAtLeast(1)) { i ->
             repeat(4) { j ->
                 drawContext.drawTexture(
                     TEXTURE,
@@ -62,7 +62,7 @@ class IotaBundleTooltipComponent(data: IotaBundleTooltipData) : TooltipComponent
         drawContext.drawItemTooltip(textRenderer, item, i + 20, j + 20)
     }
 
-    override fun getHeight() = getRows() * 18 + 8
+    override fun getHeight() = getRows().coerceAtLeast(1) * 18 + 8
     override fun getWidth(textRenderer: TextRenderer) = 4 * 18 + 8
 
     // no Int.ceilDiv :pensive:

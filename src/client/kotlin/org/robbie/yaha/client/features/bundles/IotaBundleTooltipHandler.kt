@@ -47,10 +47,10 @@ object IotaBundleTooltipHandler {
     private fun getHoveredSlot(screen: HandledScreen<*>, mouseX: Int, mouseY: Int): Slot? {
         for (slot in screen.screenHandler.slots) {
             if (
-                mouseX >= screen.x + slot.x &&
-                mouseX <= screen.x + slot.x + 16 &&
-                mouseY >= screen.y + slot.y &&
-                mouseY <= screen.y + slot.y + 16
+                mouseX >= screen.x + slot.x - 1 &&
+                mouseX < screen.x + slot.x + 17 &&
+                mouseY >= screen.y + slot.y - 1 &&
+                mouseY < screen.y + slot.y + 17
             ) return slot
         }
         return null
