@@ -1,5 +1,6 @@
 package org.robbie.yaha.features.anvil
 
+import net.fabricmc.loader.api.FabricLoader
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EntityPose
@@ -21,6 +22,7 @@ import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import org.robbie.yaha.Yaha
 import org.robbie.yaha.YahaUtils
+import org.robbie.yaha.compat.SpectrumCompat
 import org.robbie.yaha.features.paper_plane.PaperPlaneEntity
 import org.robbie.yaha.registry.YahaDamageTypes
 import org.robbie.yaha.registry.YahaEntities
@@ -74,6 +76,8 @@ class AnvilEntity(
     override fun canHit() = true
 
     override fun onBlockHit(blockHitResult: BlockHitResult) {
+        setPosition(blockHitResult.pos)
+        if (FabricLoader.getInstance().isModLoaded("spectrum")) SpectrumCompat.crush(this)
         shatter()
     }
 
