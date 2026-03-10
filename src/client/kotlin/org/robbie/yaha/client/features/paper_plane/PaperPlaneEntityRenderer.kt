@@ -7,6 +7,7 @@ import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
+import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.RotationAxis
 import org.joml.Matrix3f
@@ -78,4 +79,5 @@ class PaperPlaneEntityRenderer(context: EntityRendererFactory.Context) : EntityR
     }
 
     override fun getTexture(entity: PaperPlaneEntity) = Yaha.id("textures/entity/paper_plane.png")
+    override fun getBlockLight(entity: PaperPlaneEntity, pos: BlockPos) = 15
 }

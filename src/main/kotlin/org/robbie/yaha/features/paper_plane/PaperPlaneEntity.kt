@@ -88,7 +88,7 @@ class PaperPlaneEntity(
         val entity = source.attacker ?: return false
 
         if (!world.isClient) {
-            velocity = entity.rotationVector
+            velocity = entity.rotationVector.multiply(2.0)
             owner = entity
             setTarget(null)
         }
