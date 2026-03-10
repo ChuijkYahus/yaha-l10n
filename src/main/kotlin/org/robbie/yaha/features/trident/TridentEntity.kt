@@ -16,7 +16,7 @@ import net.minecraft.util.hit.HitResult
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import org.robbie.yaha.YahaUtils
-import org.robbie.yaha.features.anvil.AnvilEntity
+import org.robbie.yaha.features.paper_plane.PaperPlaneEntity
 import org.robbie.yaha.registry.YahaDamageTypes
 import org.robbie.yaha.registry.YahaEntities
 import kotlin.math.pow
@@ -117,6 +117,8 @@ class TridentEntity(
     }
 
     override fun canHit() = false
-    override fun canHit(entity: Entity) = super.canHit(entity) && !piercedEntities.contains(entity.id)
+    override fun canHit(entity: Entity) = super.canHit(entity)
+            && !piercedEntities.contains(entity.id)
+            && (entity !is PaperPlaneEntity || entity.owner != owner)
     override fun initDataTracker() {}
 }

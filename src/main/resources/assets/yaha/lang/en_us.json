@@ -49,6 +49,9 @@
   "hexcasting.action.yaha:anvil": "Conjure Anvil",
   "yaha.page.anvil.summary": "Summons an anvil that deals damage based on its velocity. Damage dealt never goes above 10 hearts. Costs one $(l:items/amethyst)$(item)Charged Amethyst$(). Adds itself onto the stack.",
   "yaha.page.anvil.0": "Dense yet brittle, shattering upon collision with the ground or when it has collided with an entity thrice. The anvil does not collide with other anvils, or with paper planes that belong to the same caster.$(br2)$(italic)i think i just heard \"1000 falling anvil danmaku\" two squads over.",
+  "hexcasting.action.yaha:trident": "Conjure Trident",
+  "yaha.page.trident.summary": "Summons a trident that pierces mobs and pulls them inwards. Costs one $(l:items/amethyst)$(item)Charged Amethyst$(). Adds itself onto the stack.",
+  "yaha.page.trident.0": "Shatters after piercing 3 mobs, or against any block. Damage dealt is identical to a conjured anvil with the same velocity.$(br2)$(italic)Get over here!",
 
   "yaha.page.spells.title": "Yaha Spells",
   "hexcasting.action.yaha:sussify_block": "Bury Item",

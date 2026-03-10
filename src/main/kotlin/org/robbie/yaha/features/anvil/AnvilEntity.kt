@@ -13,14 +13,12 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.particle.ItemStackParticleEffect
 import net.minecraft.particle.ParticleTypes
 import net.minecraft.server.world.ServerWorld
-import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.hit.EntityHitResult
 import net.minecraft.util.hit.HitResult
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
-import org.robbie.yaha.Yaha
 import org.robbie.yaha.YahaUtils
 import org.robbie.yaha.compat.SpectrumCompat
 import org.robbie.yaha.features.paper_plane.PaperPlaneEntity
