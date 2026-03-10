@@ -14,6 +14,7 @@ import org.robbie.yaha.features.spells.OpPotionToItem
 import org.robbie.yaha.features.spells.OpSussifyBlock
 import org.robbie.yaha.features.time_bomb.OpTimeBomb
 import org.robbie.yaha.features.time_bomb.OpTimeBombPos
+import org.robbie.yaha.features.trident.OpTrident
 
 object YahaActions {
     fun register() {
@@ -22,6 +23,7 @@ object YahaActions {
         register("time_bomb", HexDir.NORTH_WEST, "eewaqawee", OpTimeBomb)
         register("time_bomb_pos", HexDir.NORTH_WEST, "eewaqaweedd", OpTimeBombPos)
         register("anvil", HexDir.WEST, "dqdwdqdqaa", OpAnvil)
+        register("trident", HexDir.SOUTH_EAST, "ddwwdaaeaa", OpTrident)
 
         register("sussify_block", HexDir.EAST, "eqqqeawqwqwqwqwqw", OpSussifyBlock)
         register("potion_to_item", HexDir.EAST, "dqqqqqedwda", OpPotionToItem)

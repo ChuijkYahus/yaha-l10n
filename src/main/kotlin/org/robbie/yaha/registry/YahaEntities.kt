@@ -9,6 +9,7 @@ import org.robbie.yaha.Yaha
 import org.robbie.yaha.features.anvil.AnvilEntity
 import org.robbie.yaha.features.paper_plane.PaperPlaneEntity
 import org.robbie.yaha.features.time_bomb.TimeBombEntity
+import org.robbie.yaha.features.trident.TridentEntity
 
 object YahaEntities {
     val PAPER_PLANE_ENTITY: EntityType<PaperPlaneEntity> = EntityType.Builder
@@ -26,10 +27,16 @@ object YahaEntities {
         .setDimensions(1f, 1f)
         .build(Yaha.MOD_ID + ":anvil")
 
+    val TRIDENT_ENTITY: EntityType<TridentEntity> = EntityType.Builder
+        .create(::TridentEntity, SpawnGroup.MISC)
+        .setDimensions(0.5f, 0.5f)
+        .build(Yaha.MOD_ID + ":trident")
+
     fun register() {
         register("paper_plane", PAPER_PLANE_ENTITY)
         register("time_bomb", TIME_BOMB_ENTITY)
         register("anvil", ANVIL_ENTITY)
+        register("trident", TRIDENT_ENTITY)
     }
 
     private fun register(name: String, entityType: EntityType<out Entity>) {

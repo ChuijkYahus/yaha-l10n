@@ -87,9 +87,7 @@ class PaperPlaneEntity(
 
     override fun damage(source: DamageSource, amount: Float): Boolean {
         if (isInvulnerableTo(source)) return false
-        val entity = source.attacker
-
-        if (entity == null) return false
+        val entity = source.attacker ?: return false
 
         if (!world.isClient) {
             velocity = entity.rotationVector
@@ -132,12 +130,7 @@ class PaperPlaneEntity(
 
     private fun shatter() {
         (world as? ServerWorld)?.let {
-            it.playSound(
-                null,
-                x, y, z,
-                SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.PLAYERS,
-                0.25f, 1.5f
-            )
+            playSound(SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, 0.25f, 1.5f)
             val particleParam = ItemStackParticleEffect(ParticleTypes.ITEM, ItemStack(Items.AMETHYST_BLOCK, 1))
             it.spawnParticles(
                 particleParam,

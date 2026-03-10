@@ -14,7 +14,7 @@ import org.joml.Matrix4f
 import org.robbie.yaha.Yaha
 import org.robbie.yaha.features.paper_plane.PaperPlaneEntity
 
-class PaperPlaneRenderer(context: EntityRendererFactory.Context) : EntityRenderer<PaperPlaneEntity>(context) {
+class PaperPlaneEntityRenderer(context: EntityRendererFactory.Context) : EntityRenderer<PaperPlaneEntity>(context) {
     override fun render(
         entity: PaperPlaneEntity,
         yaw: Float,
