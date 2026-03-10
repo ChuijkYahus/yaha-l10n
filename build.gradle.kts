@@ -50,6 +50,11 @@ repositories {
     maven("https://maven.shedaniel.me/")
     maven("https://maven.terraformersmc.com/releases")
 
+    maven("https://maven.is-immensely.gay/releases")
+    maven("https://maven.nucleoid.xyz")
+    maven("https://dl.cloudsmith.io/public/klikli-dev/mods/maven")
+    maven("https://maven.jamieswhiteshirt.com/libs-release/")
+
     maven("https://api.modrinth.com/maven")
     maven("https://maven.terraformersmc.com/")
 }
@@ -77,6 +82,10 @@ dependencies {
     modLocalRuntime("at.petra-k.paucal:paucal-fabric-${project.property("minecraft_version")}:${project.property("paucal_version")}")
     modLocalRuntime(files("${rootProject.rootDir}/libs/serialization-hooks-0.4.99999.jar"))
 
+    // interop
+    modCompileOnly("de.dafuqs:spectrum:${project.property("spectrum_version")}")
+    // modLocalRuntime("de.dafuqs:spectrum:${project.property("spectrum_version")}")
+
     // other mod testing
     modLocalRuntime("maven.modrinth:hexcassettes:1.1.4")
     modLocalRuntime("dev.emi:emi-fabric:1.1.22+1.20.1")
@@ -95,7 +104,8 @@ tasks.processResources {
             "loader_version" to project.property("loader_version"),
             "kotlin_loader_version" to project.property("kotlin_loader_version"),
             "hexcasting_version" to project.property("hexcasting_version"),
-            "cardinal_components_version" to project.property("cardinal_components_version")
+            "cardinal_components_version" to project.property("cardinal_components_version"),
+            "spectrum_version" to project.property("spectrum_version")
         )
     }
 }

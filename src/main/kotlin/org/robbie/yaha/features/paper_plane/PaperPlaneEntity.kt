@@ -3,7 +3,6 @@ package org.robbie.yaha.features.paper_plane
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EntityPose
-import net.minecraft.entity.EntityStatuses
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.projectile.ProjectileEntity
@@ -86,12 +85,10 @@ class PaperPlaneEntity(
 
     override fun damage(source: DamageSource, amount: Float): Boolean {
         if (isInvulnerableTo(source)) return false
-        val entity = source.attacker
-
-        if (entity == null) return false
+        val entity = source.attacker ?: return false
 
         if (!world.isClient) {
-            velocity = entity.rotationVector
+            velocity = entity.rotationVector.multiply(2.0)
             owner = entity
             setTarget(null)
         }
@@ -122,7 +119,7 @@ class PaperPlaneEntity(
 
     override fun onEntityHit(entityHitResult: EntityHitResult) {
         val entity = entityHitResult.entity
-        entity.damage(world.damageSources.create(YahaDamageTypes.PAPER_PLANE, this, owner), 2f)
+        entity.damage(world.damageSources.create(YahaDamageTypes.PAPER_PLANE, this, owner), 6f)
         if (entity is PaperPlaneEntity && owner is ServerPlayerEntity)
             YahaCriteria.COLLIDE_PLANES.trigger(owner as ServerPlayerEntity)
 
@@ -130,17 +127,18 @@ class PaperPlaneEntity(
     }
 
     private fun shatter() {
-        playSound(SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, 0.25f, 1.5f) // sounds seem to work in here but not in handleStatus()
-        world.sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES)
-        discard()
-    }
-
-    override fun handleStatus(status: Byte) {
-        if (status == EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES) {
-            // particles seem to work in here but not in shatter()
+        (world as? ServerWorld)?.let {
+            playSound(SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, 0.25f, 1.5f)
             val particleParam = ItemStackParticleEffect(ParticleTypes.ITEM, ItemStack(Items.AMETHYST_BLOCK, 1))
-            repeat(8) { world.addParticle(particleParam, x, y, z, 0.0, 0.0, 0.0) }
+            it.spawnParticles(
+                particleParam,
+                x, y, z,
+                8,
+                0.0, 0.0, 0.0,
+                0.1
+            )
         }
+        discard()
     }
 
     override fun writeCustomDataToNbt(nbt: NbtCompound) {

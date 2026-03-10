@@ -6,6 +6,7 @@ import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
+import net.minecraft.util.math.BlockPos
 import org.robbie.yaha.Yaha
 import org.robbie.yaha.client.registry.YahaEntitiesClient
 import org.robbie.yaha.features.anvil.AnvilEntity
@@ -33,4 +34,5 @@ class AnvilEntityRenderer(context: EntityRendererFactory.Context) : EntityRender
     }
 
     override fun getTexture(entity: AnvilEntity?) = Yaha.id("textures/entity/anvil.png")
+    override fun getBlockLight(entity: AnvilEntity, pos: BlockPos) = 15
 }
