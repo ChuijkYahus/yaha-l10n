@@ -13,6 +13,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.misc.MediaConstants
 import net.minecraft.entity.ItemEntity
+import net.minecraft.entity.projectile.thrown.EggEntity
 import net.minecraft.entity.projectile.thrown.ExperienceBottleEntity
 import net.minecraft.entity.projectile.thrown.PotionEntity
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity
@@ -21,6 +22,7 @@ import org.robbie.yaha.features.time_bomb.TimeBombCastEnv
 import org.robbie.yaha.features.time_bomb.TimeBombEntity
 import org.robbie.yaha.registry.YahaCriteria
 
+// TODO: make this not hardcoded
 object OpPotionToItem : SpellAction {
     override val argc = 1
 
@@ -32,6 +34,7 @@ object OpPotionToItem : SpellAction {
 
         if (
             entity !is PotionEntity &&
+            entity !is EggEntity &&
             entity !is ExperienceBottleEntity &&
             entity !is TimeBombEntity ||
             entity.owner != env.castingEntity
