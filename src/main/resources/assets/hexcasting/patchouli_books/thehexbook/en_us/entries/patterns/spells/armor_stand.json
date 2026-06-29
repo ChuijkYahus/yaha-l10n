@@ -1,0 +1,102 @@
+{
+  "name": "yaha.page.armor_stand.title",
+  "icon": "minecraft:armor_stand",
+  "category": "hexcasting:patterns/spells",
+  "advancement": "hexcasting:root",
+  "pages": [
+    "yaha.page.armor_stand.0",
+    {
+      "type": "patchouli:empty"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "yaha:stand_toggle_arms",
+      "anchor": "yaha:stand_toggle_arms",
+      "input": "entity",
+      "output": "",
+      "text": "yaha.page.stand_toggle_arms.summary"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "yaha:stand_toggle_base",
+      "anchor": "yaha:stand_toggle_base",
+      "input": "entity",
+      "output": "",
+      "text": "yaha.page.stand_toggle_base.summary"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "yaha:stand_toggle_tiny",
+      "anchor": "yaha:stand_toggle_tiny",
+      "input": "entity",
+      "output": "",
+      "text": "yaha.page.stand_toggle_tiny.summary"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "yaha:stand_rotate_yaw",
+      "anchor": "yaha:stand_rotate_yaw",
+      "input": "entity, number",
+      "output": "",
+      "text": "yaha.page.stand_rotate_yaw.summary"
+    },
+    {
+      "type": "patchouli:empty"
+    },
+    "yaha.page.armor_stand.1",
+    {
+      "type": "hexcasting:manual_pattern",
+      "op_id": "yaha:stand_rotate_upper",
+      "anchor": "yaha:stand_rotate_upper",
+      "input": "entity, vector",
+      "output": "",
+      "text": "yaha.page.stand_rotate_upper.summary",
+      "patterns": [
+        {
+          "startdir": "NORTH_EAST",
+          "signature": "edweaqadaw"
+        },
+        {
+          "startdir": "NORTH_WEST",
+          "signature": "aweaqadawd"
+        }
+      ]
+    },
+    {
+      "type": "hexcasting:manual_pattern",
+      "op_id": "yaha:stand_rotate_middle",
+      "anchor": "yaha:stand_rotate_middle",
+      "input": "entity, vector",
+      "output": "",
+      "text": "yaha.page.stand_rotate_middle.summary",
+      "patterns": [
+        {
+          "startdir": "EAST",
+          "signature": "addweaqada"
+        },
+        {
+          "startdir": "WEST",
+          "signature": "eddweaqada"
+        }
+      ]
+    },
+    {
+      "type": "hexcasting:manual_pattern",
+      "op_id": "yaha:stand_rotate_lower",
+      "anchor": "yaha:stand_rotate_lower",
+      "input": "entity, vector",
+      "output": "",
+      "text": "yaha.page.stand_rotate_lower.summary",
+      "patterns": [
+        {
+          "startdir": "SOUTH_EAST",
+          "signature": "daqadawddw"
+        },
+        {
+          "startdir": "SOUTH_WEST",
+          "signature": "dwddweaqad"
+        }
+      ]
+    }
+  ]
+}
