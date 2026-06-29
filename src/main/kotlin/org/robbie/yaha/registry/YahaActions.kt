@@ -8,6 +8,7 @@ import at.petrak.hexcasting.common.lib.hex.HexActions
 import net.minecraft.registry.Registry
 import org.robbie.yaha.Yaha
 import org.robbie.yaha.features.anvil.OpAnvil
+import org.robbie.yaha.features.armor_stand.OpStandToggle
 import org.robbie.yaha.features.paper_plane.OpPaperPlane
 import org.robbie.yaha.features.paper_plane.OpPaperPlaneTarget
 import org.robbie.yaha.features.spells.OpPotionToItem
@@ -27,6 +28,10 @@ object YahaActions {
 
         register("sussify_block", HexDir.EAST, "eqqqeawqwqwqwqwqw", OpSussifyBlock)
         register("potion_to_item", HexDir.EAST, "dqqqqqedwda", OpPotionToItem)
+
+        register("stand_toggle_arms", HexDir.EAST, "adawdedqea", OpStandToggle(OpStandToggle.Toggle.SHOW_ARMS))
+        register("stand_toggle_base", HexDir.NORTH_WEST, "dawddwe", OpStandToggle(OpStandToggle.Toggle.HIDE_BASEPLATE))
+        register("stand_toggle_tiny", HexDir.EAST, "adaaea", OpStandToggle(OpStandToggle.Toggle.MAKE_SMALL))
     }
 
     private fun register(name: String, startDir: HexDir, sig: String, action: Action) =

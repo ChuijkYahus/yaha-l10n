@@ -4,6 +4,7 @@
   "package": "org.robbie.yaha.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "accessors.ArmorStandAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
