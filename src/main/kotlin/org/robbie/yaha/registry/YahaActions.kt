@@ -8,7 +8,9 @@ import at.petrak.hexcasting.common.lib.hex.HexActions
 import net.minecraft.registry.Registry
 import org.robbie.yaha.Yaha
 import org.robbie.yaha.features.anvil.OpAnvil
+import org.robbie.yaha.features.armor_stand.OpStandPose
 import org.robbie.yaha.features.armor_stand.OpStandToggle
+import org.robbie.yaha.features.armor_stand.OpStandYaw
 import org.robbie.yaha.features.paper_plane.OpPaperPlane
 import org.robbie.yaha.features.paper_plane.OpPaperPlaneTarget
 import org.robbie.yaha.features.spells.OpPotionToItem
@@ -29,9 +31,16 @@ object YahaActions {
         register("sussify_block", HexDir.EAST, "eqqqeawqwqwqwqwqw", OpSussifyBlock)
         register("potion_to_item", HexDir.EAST, "dqqqqqedwda", OpPotionToItem)
 
-        register("stand_toggle_arms", HexDir.EAST, "adawdedqea", OpStandToggle(OpStandToggle.Toggle.SHOW_ARMS))
+        register("stand_toggle_arms", HexDir.WEST, "eddweaqadaq", OpStandToggle(OpStandToggle.Toggle.SHOW_ARMS))
         register("stand_toggle_base", HexDir.NORTH_WEST, "dawddwe", OpStandToggle(OpStandToggle.Toggle.HIDE_BASEPLATE))
         register("stand_toggle_tiny", HexDir.EAST, "adaaea", OpStandToggle(OpStandToggle.Toggle.MAKE_SMALL))
+        register("stand_rotate_head", HexDir.NORTH_EAST, "edweaqadaw", OpStandPose(OpStandPose.Part.HEAD))
+        register("stand_rotate_body", HexDir.NORTH_WEST, "aweaqadawd", OpStandPose(OpStandPose.Part.BODY))
+        register("stand_rotate_yaw", HexDir.NORTH_EAST, "eadawddwea", OpStandYaw)
+        register("stand_rotate_left_arm", HexDir.EAST, "addweaqada", OpStandPose(OpStandPose.Part.LEFT_ARM))
+        register("stand_rotate_right_arm", HexDir.WEST, "eddweaqada", OpStandPose(OpStandPose.Part.RIGHT_ARM))
+        register("stand_rotate_left_leg", HexDir.SOUTH_EAST, "daqadawddw", OpStandPose(OpStandPose.Part.LEFT_LEG))
+        register("stand_rotate_right_leg", HexDir.SOUTH_WEST, "dwddweaqad", OpStandPose(OpStandPose.Part.RIGHT_LEG))
     }
 
     private fun register(name: String, startDir: HexDir, sig: String, action: Action) =
