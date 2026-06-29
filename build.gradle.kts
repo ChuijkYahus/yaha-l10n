@@ -33,7 +33,6 @@ loom {
         }
     }
 
-    accessWidenerPath = file("src/main/resources/yaha.classtweaker")
 }
 
 fabricApi {

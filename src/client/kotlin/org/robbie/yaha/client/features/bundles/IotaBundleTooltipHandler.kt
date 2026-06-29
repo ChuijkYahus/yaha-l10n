@@ -6,6 +6,7 @@ import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.gui.screen.ingame.HandledScreen
 import net.minecraft.screen.slot.Slot
 import org.robbie.yaha.features.bundles.IotaHolderBundle
+import org.robbie.yaha.mixin.client.accessors.HandledScreenAccessor
 import org.robbie.yaha.registry.YahaCardinalComponents
 
 object IotaBundleTooltipHandler {
@@ -46,12 +47,14 @@ object IotaBundleTooltipHandler {
 
     private fun getHoveredSlot(screen: HandledScreen<*>, mouseX: Int, mouseY: Int): Slot? {
         for (slot in screen.screenHandler.slots) {
-            if (
-                mouseX >= screen.x + slot.x - 1 &&
-                mouseX < screen.x + slot.x + 17 &&
-                mouseY >= screen.y + slot.y - 1 &&
-                mouseY < screen.y + slot.y + 17
-            ) return slot
+            (screen as HandledScreenAccessor).run {
+                if (
+                    mouseX >= yaha_getX() + slot.x - 1 &&
+                    mouseX < yaha_getX() + slot.x + 17 &&
+                    mouseY >= yaha_getY() + slot.y - 1 &&
+                    mouseY < yaha_getY() + slot.y + 17
+                ) return slot
+            }
         }
         return null
     }

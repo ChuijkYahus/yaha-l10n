@@ -39,7 +39,6 @@
     "cardinal-components-base": "~${cardinal_components_version}",
     "cardinal-components-entity": "~${cardinal_components_version}"
   },
-  "accessWidener": "yaha.classtweaker",
   "custom": {
     "cardinal-components": [
       "yaha:bundle_select"
