@@ -6,6 +6,7 @@ import net.minecraft.sound.SoundEvent
 import org.robbie.yaha.Yaha
 
 object YahaSounds {
+    val PLANE_SHATTER = register("plane_shatter")
     val ANVIL_HIT = register("anvil_hit")
     val ANVIL_SHATTER = register("anvil_shatter")
 

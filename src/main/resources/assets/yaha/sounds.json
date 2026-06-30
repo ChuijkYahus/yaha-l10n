@@ -1,4 +1,10 @@
 {
+  "plane_shatter": {
+    "subtitle": "sounds.yaha.plane_shatter",
+    "sounds": [
+      "yaha:plane_shatter"
+    ]
+  },
   "anvil_hit": {
     "subtitle": "sounds.yaha.anvil_hit",
     "sounds": [

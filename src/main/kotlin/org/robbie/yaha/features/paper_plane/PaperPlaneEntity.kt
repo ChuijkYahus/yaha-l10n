@@ -14,7 +14,6 @@ import net.minecraft.particle.ItemStackParticleEffect
 import net.minecraft.particle.ParticleTypes
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
-import net.minecraft.sound.SoundEvents
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.hit.EntityHitResult
 import net.minecraft.util.hit.HitResult
@@ -24,6 +23,7 @@ import org.robbie.yaha.YahaUtils
 import org.robbie.yaha.registry.YahaCriteria
 import org.robbie.yaha.registry.YahaDamageTypes
 import org.robbie.yaha.registry.YahaEntities
+import org.robbie.yaha.registry.YahaSounds
 import java.util.UUID
 
 const val ACCELERATION = 0.1
@@ -128,7 +128,7 @@ class PaperPlaneEntity(
 
     private fun shatter() {
         (world as? ServerWorld)?.let {
-            playSound(SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, 0.25f, 1.5f)
+            playSound(YahaSounds.PLANE_SHATTER, 1.0f, 1.0f + 0.2f * random.nextFloat())
             val particleParam = ItemStackParticleEffect(ParticleTypes.ITEM, ItemStack(Items.AMETHYST_BLOCK, 1))
             it.spawnParticles(
                 particleParam,

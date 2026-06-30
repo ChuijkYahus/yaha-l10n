@@ -83,7 +83,7 @@ class AnvilEntity(
         val entity = entityHitResult.entity
         if (cooldown != 0) return
 
-        playSound(YahaSounds.ANVIL_HIT, 1.0f, 1.0f)
+        playSound(YahaSounds.ANVIL_HIT, 1.0f, 1.0f + 0.2f * random.nextFloat())
         spawnParticles()
 
         val damage = 20 - 20 * (velocity.lengthSquared() / 15 + 1).pow(-2)
@@ -104,7 +104,7 @@ class AnvilEntity(
     }
 
     private fun shatter() {
-        playSound(YahaSounds.ANVIL_SHATTER, 1.0f, 1.0f)
+        playSound(YahaSounds.ANVIL_SHATTER, 0.8f, 1.0f + 0.2f * random.nextFloat())
         spawnParticles()
         discard()
     }
