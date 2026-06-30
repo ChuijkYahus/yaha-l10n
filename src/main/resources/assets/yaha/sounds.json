@@ -1,0 +1,14 @@
+{
+  "anvil_hit": {
+    "subtitle": "sounds.yaha.anvil_hit",
+    "sounds": [
+      "yaha:anvil_hit"
+    ]
+  },
+  "anvil_shatter": {
+    "subtitle": "sounds.yaha.anvil_shatter",
+    "sounds": [
+      "yaha:anvil_shatter"
+    ]
+  }
+}

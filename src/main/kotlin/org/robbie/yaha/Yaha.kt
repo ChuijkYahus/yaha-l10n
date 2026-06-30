@@ -8,6 +8,7 @@ import org.robbie.yaha.registry.YahaCriteria
 import org.robbie.yaha.registry.YahaDamageTypes
 import org.robbie.yaha.registry.YahaEntities
 import org.robbie.yaha.registry.YahaItems
+import org.robbie.yaha.registry.YahaSounds
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -19,6 +20,7 @@ class Yaha : ModInitializer {
         YahaDamageTypes.register()
         YahaEntities.register()
         YahaItems.register()
+        YahaSounds.register()
     }
 
     companion object {

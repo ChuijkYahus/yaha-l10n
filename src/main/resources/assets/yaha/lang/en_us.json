@@ -20,6 +20,8 @@
   "item.yaha.time_bomb": "Disarmed Time Bomb",
   "item.yaha.spindle": "Thought Knot Spindle",
   "item.yaha.pouch": "Focal Pouch",
+  "sounds.yaha.anvil_hit": "Conjured Anvil Hits",
+  "sounds.yaha.anvil_shatter": "Conjured Anvil Shatters",
 
   "hexcasting.mishap.bad_item.yaha:paper_plane": "a Paper Plane",
   "hexcasting.mishap.bad_item.yaha:potion": "a thrown potion",

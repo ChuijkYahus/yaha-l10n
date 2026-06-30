@@ -13,7 +13,6 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.particle.ItemStackParticleEffect
 import net.minecraft.particle.ParticleTypes
 import net.minecraft.server.world.ServerWorld
-import net.minecraft.sound.SoundEvents
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.hit.EntityHitResult
 import net.minecraft.util.hit.HitResult
@@ -24,6 +23,7 @@ import org.robbie.yaha.compat.SpectrumCompat
 import org.robbie.yaha.features.paper_plane.PaperPlaneEntity
 import org.robbie.yaha.registry.YahaDamageTypes
 import org.robbie.yaha.registry.YahaEntities
+import org.robbie.yaha.registry.YahaSounds
 import kotlin.math.pow
 
 const val MAX_AGE = 600
@@ -76,14 +76,14 @@ class AnvilEntity(
     override fun onBlockHit(blockHitResult: BlockHitResult) {
         setPosition(blockHitResult.pos)
         if (FabricLoader.getInstance().isModLoaded("spectrum")) SpectrumCompat.crush(this)
-        shatter()
+        if (!world.isClient) shatter()
     }
 
     override fun onEntityHit(entityHitResult: EntityHitResult) {
         val entity = entityHitResult.entity
         if (cooldown != 0) return
 
-        playHitSound()
+        playSound(YahaSounds.ANVIL_HIT, 1.0f, 1.0f)
         spawnParticles()
 
         val damage = 20 - 20 * (velocity.lengthSquared() / 15 + 1).pow(-2)
@@ -100,23 +100,13 @@ class AnvilEntity(
         cooldown = 2
 
         count--
-        if (count == 0) shatter()
+        if (count == 0 && !world.isClient) shatter()
     }
 
     private fun shatter() {
-        playShatterSound()
+        playSound(YahaSounds.ANVIL_SHATTER, 1.0f, 1.0f)
         spawnParticles()
         discard()
-    }
-
-    private fun playHitSound() {
-        playSound(SoundEvents.BLOCK_ANVIL_LAND, 0.2f, 1f)
-        playSound(SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, 0.5f, 1f)
-    }
-
-    private fun playShatterSound() {
-        playSound(SoundEvents.BLOCK_ANVIL_LAND, 0.5f, 0.5f)
-        playSound(SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, 1.0f, 0.5f)
     }
 
     private fun spawnParticles() {
