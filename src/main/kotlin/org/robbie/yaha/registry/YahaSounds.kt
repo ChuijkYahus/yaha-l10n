@@ -9,6 +9,8 @@ object YahaSounds {
     val PLANE_SHATTER = register("plane_shatter")
     val ANVIL_HIT = register("anvil_hit")
     val ANVIL_SHATTER = register("anvil_shatter")
+    val TRIDENT_HIT = register("trident_hit")
+    val TRIDENT_SHATTER = register("trident_shatter")
 
     fun register() {}
 

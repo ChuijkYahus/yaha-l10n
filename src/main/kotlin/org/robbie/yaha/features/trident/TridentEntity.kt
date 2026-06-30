@@ -19,6 +19,7 @@ import org.robbie.yaha.YahaUtils
 import org.robbie.yaha.features.paper_plane.PaperPlaneEntity
 import org.robbie.yaha.registry.YahaDamageTypes
 import org.robbie.yaha.registry.YahaEntities
+import org.robbie.yaha.registry.YahaSounds
 import kotlin.math.pow
 
 const val MAX_AGE = 600
@@ -70,7 +71,7 @@ class TridentEntity(
     override fun onEntityHit(entityHitResult: EntityHitResult) {
         val entity = entityHitResult.entity
 
-        playHitSound()
+        playSound(YahaSounds.TRIDENT_HIT, 1.0f, 1.0f + 0.2f * random.nextFloat())
         spawnParticles()
 
         val damage = 20 - 20 * (velocity.lengthSquared() / 15 + 1).pow(-2)
@@ -88,19 +89,9 @@ class TridentEntity(
     }
 
     private fun shatter() {
-        playShatterSound()
+        playSound(YahaSounds.TRIDENT_SHATTER, 1.0f, 1.0f + 0.2f * random.nextFloat())
         spawnParticles()
         discard()
-    }
-
-    private fun playHitSound() {
-        playSound(SoundEvents.ITEM_TRIDENT_HIT, 1f, 1f)
-        playSound(SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, 0.5f, 1f)
-    }
-
-    private fun playShatterSound() {
-        playSound(SoundEvents.ITEM_TRIDENT_THUNDER, 0.3f, 1.5f)
-        playSound(SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, 1.0f, 0.5f)
     }
 
     private fun spawnParticles() {

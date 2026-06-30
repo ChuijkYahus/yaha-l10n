@@ -16,5 +16,17 @@
     "sounds": [
       "yaha:anvil_shatter"
     ]
+  },
+  "trident_hit": {
+    "subtitle": "sounds.yaha.trident_hit",
+    "sounds": [
+      "yaha:trident_hit"
+    ]
+  },
+  "trident_shatter": {
+    "subtitle": "sounds.yaha.trident_shatter",
+    "sounds": [
+      "yaha:trident_shatter"
+    ]
   }
 }
